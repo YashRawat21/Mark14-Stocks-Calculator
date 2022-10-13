@@ -18,19 +18,25 @@ const noProfitLossGif = document.querySelector('.no-profit-loss-gif');
 showMeBtn.addEventListener('click', clickHandler);
 
 function calculateProfitLoss(initial, quantity, current) {
-    if (initial > current) {
-        let loss = (initial - current) * quantity;
-        let lossPercentage = (loss / (initial * quantity)) * 100;
-        outputMessage(`Whoops! Your <span>Loss</span> is <span>${loss}</span> and loss <span>Percentage</span> is <span>${lossPercentage.toFixed(2)}%</span>`);
-        
-    } else if (current > initial) {
-        let profit = (current - initial) * quantity;
-        let profitPercentage = (profit / (initial * quantity)) * 100;
-        outputMessage(`Yay! Your <span>Profit</span> is <span>${profit}</span> and profit <span>Percentage</span> is <span>${profitPercentage.toFixed(2)}%</span>`);
-        
+    if(initial > 0 && quantity > 0 && current > 0 )
+    {
+
+        if (initial > current) {
+            let loss = (initial - current) * quantity;
+            let lossPercentage = (loss / (initial * quantity)) * 100;
+            outputMessage(`Whoops! Your <span>Loss</span> is <span>${loss}</span> and loss <span>Percentage</span> is <span>${lossPercentage.toFixed(2)}%</span>`);
+            
+        } else if (current > initial) {
+            let profit = (current - initial) * quantity;
+            let profitPercentage = (profit / (initial * quantity)) * 100;
+            outputMessage(`Yay! Your <span>Profit</span> is <span>${profit}</span> and profit <span>Percentage</span> is <span>${profitPercentage.toFixed(2)}%</span>`);
+            
+        } else {
+            outputMessage('<span>No Profit / No Loss</span>');
+            
+        }
     } else {
-        outputMessage('<span>No Profit / No Loss</span>');
-        
+        outputMessage("<span>Input values can't be Negative or zero!!</span>")
     }
 }
 
